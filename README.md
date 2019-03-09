@@ -7,7 +7,9 @@ This example requires that you have [GraalVM](https://www.graalvm.org/downloads/
 ## Building the Example
 Follow the steps below to build the example:
 
-1. Build the application by running the following command:
+1. Make sure that the `graalHome` variable in the `build.gradle` file is set to the `bin` directory of your Graal installation.
+
+2. Build the application by running the following command:
 
         ./gradlew clean nativeImage
         

@@ -5,6 +5,7 @@ plugins {
 
 sourceCompatibility = 1.8
 
+// Set this to your Graal Home Directory
 def graalHome = '/opt/graalvm-ee-1.0.0-rc13/Contents/Home/bin'
 
 repositories {
