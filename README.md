@@ -13,24 +13,27 @@ Follow the steps below to build the example:
         
     This will build the application and create a `cli-reflect.json` in the Gradle `build` directory.
     
-2. For some reason, unknown to me at this time, the `cli-reflect.json` file is being generated with an entry that is not
-in the jar which causes issues during compilation of the native image. To that end, open the `cli-reflect.json` file and remove 
-the following entry from the list:
-
-        {
-            "name" : "org.fusesource.jansi.AnsiConsole",
-            "allDeclaredConstructors" : true,
-            "allPublicConstructors" : true,
-            "allDeclaredMethods" : true,
-            "allPublicMethods" : true,
-            "fields" : [
-              { "name" : "out" }
-            ]
-        },
-    
-2. Using the modified `cli-reflect.json` file, run the following command to build the application as a native image:
+2. Using the `cli-reflect.json` file, run the following command to build the application as a native image:
 
         native-image -H:ReflectionConfigurationFiles=build/cli-reflect.json -H:+ReportUnsupportedElementsAtRuntime --no-server -jar build/libs/picocli-graalvm-example-0.1.0-all.jar
+        
+    If successful, you will see an output similar to the one below:
+
+        [picocli-graalvm-example-0.1.0-all:78721]    classlist:   1,470.05 ms
+        [picocli-graalvm-example-0.1.0-all:78721]        (cap):   1,647.62 ms
+        [picocli-graalvm-example-0.1.0-all:78721]        setup:   3,058.41 ms
+        [picocli-graalvm-example-0.1.0-all:78721]   (typeflow):   8,513.95 ms
+        [picocli-graalvm-example-0.1.0-all:78721]    (objects):  12,084.86 ms
+        [picocli-graalvm-example-0.1.0-all:78721]   (features):     407.10 ms
+        [picocli-graalvm-example-0.1.0-all:78721]     analysis:  21,336.51 ms
+        [picocli-graalvm-example-0.1.0-all:78721]     universe:     509.17 ms
+        [picocli-graalvm-example-0.1.0-all:78721]      (parse):   1,971.02 ms
+        [picocli-graalvm-example-0.1.0-all:78721]     (inline):   3,886.55 ms
+        [picocli-graalvm-example-0.1.0-all:78721]    (compile):  29,282.59 ms
+        [picocli-graalvm-example-0.1.0-all:78721]      compile:  36,413.99 ms
+        [picocli-graalvm-example-0.1.0-all:78721]        image:   2,200.20 ms
+        [picocli-graalvm-example-0.1.0-all:78721]        write:   1,225.08 ms
+        [picocli-graalvm-example-0.1.0-all:78721]      [total]:  66,375.99 ms
 
 ## Running the Example
 Follow the steps below to run the example:
