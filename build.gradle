@@ -1,4 +1,5 @@
 plugins {
+    id 'com.github.johnrengelman.shadow' version '5.0.0'
     id 'java'
 }
 
@@ -16,6 +17,13 @@ dependencies {
     compile 'info.picocli:picocli:3.9.5'
     generateConfig 'info.picocli:picocli-codegen:3.9.5'
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'example.cli.Example'
+    }
+}
+shadowJar.dependsOn build
 
 task(generateGraalReflectionConfig, dependsOn: 'classes', type: JavaExec) {
     main = 'picocli.codegen.aot.graalvm.ReflectionConfigGenerator'
