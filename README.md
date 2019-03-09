@@ -9,31 +9,29 @@ Follow the steps below to build the example:
 
 1. Build the application by running the following command:
 
-        ./gradlew clean build
-        
-    This will build the application and create a `cli-reflect.json` in the Gradle `build` directory.
-    
-2. Using the `cli-reflect.json` file, run the following command to build the application as a native image:
-
-        native-image -H:ReflectionConfigurationFiles=build/cli-reflect.json -H:+ReportUnsupportedElementsAtRuntime --no-server -jar build/libs/picocli-graalvm-example-0.1.0-all.jar
+        ./gradlew clean nativeImage
         
     If successful, you will see an output similar to the one below:
 
-        [picocli-graalvm-example-0.1.0-all:78721]    classlist:   1,470.05 ms
-        [picocli-graalvm-example-0.1.0-all:78721]        (cap):   1,647.62 ms
-        [picocli-graalvm-example-0.1.0-all:78721]        setup:   3,058.41 ms
-        [picocli-graalvm-example-0.1.0-all:78721]   (typeflow):   8,513.95 ms
-        [picocli-graalvm-example-0.1.0-all:78721]    (objects):  12,084.86 ms
-        [picocli-graalvm-example-0.1.0-all:78721]   (features):     407.10 ms
-        [picocli-graalvm-example-0.1.0-all:78721]     analysis:  21,336.51 ms
-        [picocli-graalvm-example-0.1.0-all:78721]     universe:     509.17 ms
-        [picocli-graalvm-example-0.1.0-all:78721]      (parse):   1,971.02 ms
-        [picocli-graalvm-example-0.1.0-all:78721]     (inline):   3,886.55 ms
-        [picocli-graalvm-example-0.1.0-all:78721]    (compile):  29,282.59 ms
-        [picocli-graalvm-example-0.1.0-all:78721]      compile:  36,413.99 ms
-        [picocli-graalvm-example-0.1.0-all:78721]        image:   2,200.20 ms
-        [picocli-graalvm-example-0.1.0-all:78721]        write:   1,225.08 ms
-        [picocli-graalvm-example-0.1.0-all:78721]      [total]:  66,375.99 ms
+        > Task :nativeImage
+        [picocli-graalvm-example-0.1.0-all:79330]    classlist:   1,591.86 ms
+        [picocli-graalvm-example-0.1.0-all:79330]        (cap):   1,333.19 ms
+        [picocli-graalvm-example-0.1.0-all:79330]        setup:   2,752.30 ms
+        [picocli-graalvm-example-0.1.0-all:79330]   (typeflow):   9,171.43 ms
+        [picocli-graalvm-example-0.1.0-all:79330]    (objects):  11,283.86 ms
+        [picocli-graalvm-example-0.1.0-all:79330]   (features):     366.95 ms
+        [picocli-graalvm-example-0.1.0-all:79330]     analysis:  21,281.39 ms
+        [picocli-graalvm-example-0.1.0-all:79330]     universe:     722.37 ms
+        [picocli-graalvm-example-0.1.0-all:79330]      (parse):   1,887.22 ms
+        [picocli-graalvm-example-0.1.0-all:79330]     (inline):   3,982.18 ms
+        [picocli-graalvm-example-0.1.0-all:79330]    (compile):  30,374.73 ms
+        [picocli-graalvm-example-0.1.0-all:79330]      compile:  37,433.35 ms
+        [picocli-graalvm-example-0.1.0-all:79330]        image:   2,968.30 ms
+        [picocli-graalvm-example-0.1.0-all:79330]        write:     803.57 ms
+        [picocli-graalvm-example-0.1.0-all:79330]      [total]:  67,726.48 ms
+        
+        BUILD SUCCESSFUL in 1m 10s
+        6 actionable tasks: 6 executed
 
 ## Running the Example
 Follow the steps below to run the example:

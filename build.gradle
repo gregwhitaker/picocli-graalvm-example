@@ -5,6 +5,8 @@ plugins {
 
 sourceCompatibility = 1.8
 
+def graalHome = '/opt/graalvm-ee-1.0.0-rc13/Contents/Home/bin'
+
 repositories {
     mavenCentral()
 }
@@ -27,7 +29,7 @@ jar {
 }
 shadowJar.dependsOn build
 
-task(generateGraalReflectionConfig, dependsOn: 'classes', type: JavaExec) {
+task generateGraalReflectionConfig (dependsOn: 'classes', type: JavaExec) {
     main = 'picocli.codegen.aot.graalvm.ReflectionConfigGenerator'
     classpath = configurations.generateConfig + sourceSets.main.runtimeClasspath
     def outputFile = new File(project.buildDir, 'cli-reflect.json')
@@ -35,3 +37,7 @@ task(generateGraalReflectionConfig, dependsOn: 'classes', type: JavaExec) {
     args = ["--output=$outputFile", 'example.cli.Example']
 }
 assemble.dependsOn generateGraalReflectionConfig
+
+task nativeImage (type: Exec, dependsOn: shadowJar) {
+    commandLine "$graalHome/native-image", "-H:ReflectionConfigurationFiles=$buildDir/cli-reflect.json", "-H:+ReportUnsupportedElementsAtRuntime", "--no-server", "-jar", "$buildDir/libs/picocli-graalvm-example-$version-all.jar"
+}
