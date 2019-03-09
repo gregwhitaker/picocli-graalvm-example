@@ -13,14 +13,16 @@ public class Example implements Runnable {
 
     @Parameters(arity = "1..*", paramLabel = "FILE", description = "File(s) to process.")
     private File[] inputFiles;
-
+    
+    @Override
     public void run() {
         if (verbose.length > 0) {
-            System.out.println(inputFiles.length + " files to process...");
+            System.out.println("Processing " + inputFiles.length + " files...");
         }
+
         if (verbose.length > 1) {
             for (File f : inputFiles) {
-                System.out.println(f.getAbsolutePath());
+                System.out.println("Processing: " + f.getAbsolutePath());
             }
         }
     }
