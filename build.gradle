@@ -8,7 +8,20 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation 'info.picocli:picocli:3.9.5'
-    implementation 'info.picocli:picocli-codegen:3.9.5'
+configurations {
+    generateConfig
 }
+
+dependencies {
+    compile 'info.picocli:picocli:3.9.5'
+    generateConfig 'info.picocli:picocli-codegen:3.9.5'
+}
+
+task(generateGraalReflectionConfig, dependsOn: 'classes', type: JavaExec) {
+    main = 'picocli.codegen.aot.graalvm.ReflectionConfigGenerator'
+    classpath = configurations.generateConfig + sourceSets.main.runtimeClasspath
+    def outputFile = new File(project.buildDir, 'cli-reflect.json')
+    //args = ["--output=$outputFile", 'com.your.package.YourCommand1', 'com.your.package.YourCommand2']
+    args = ["--output=$outputFile", 'example.cli.Example']
+}
+assemble.dependsOn generateGraalReflectionConfig

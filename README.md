@@ -7,7 +7,11 @@ This example requires that you have [GraalVM](https://www.graalvm.org/downloads/
 ## Building the Example
 Follow the steps below to build the example:
 
-1. TBD
+1. Build the application by running the following command:
+
+        ./gradlew clean build
+        
+2. 
 
 ## Running the Example
 TBD
