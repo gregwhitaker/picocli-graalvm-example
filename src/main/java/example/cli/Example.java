@@ -13,7 +13,7 @@ public class Example implements Runnable {
 
     @Parameters(arity = "1..*", paramLabel = "FILE", description = "File(s) to process.")
     private File[] inputFiles;
-    
+
     @Override
     public void run() {
         if (verbose.length > 0) {
