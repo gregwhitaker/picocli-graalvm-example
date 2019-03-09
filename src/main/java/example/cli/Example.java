@@ -16,10 +16,12 @@ public class Example implements Runnable {
 
     @Override
     public void run() {
+        // Triggered by "-v"
         if (verbose.length > 0) {
             System.out.println("Processing " + inputFiles.length + " files...");
         }
 
+        // Triggered by "-vv"
         if (verbose.length > 1) {
             for (File f : inputFiles) {
                 System.out.println("Processing: " + f.getAbsolutePath());
