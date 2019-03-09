@@ -11,13 +11,22 @@ Follow the steps below to build the example:
 
         ./gradlew clean build
         
-2. 
+    This will build the application and create a `cli-reflect.json` in the Gradle `build` directory.
+    
+2. Using the generated `cli-reflect.json` file, run the following command to build the application as a native image:
+
+        TBD
 
 ## Running the Example
 TBD
 
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/picocli-graalvm-example/issues).
+
+## Resources
+
+1. [PicoCLI Code Generation](https://github.com/remkop/picocli/tree/master/picocli-codegen)
+2. [PicoCLI on GraalVM](https://picocli.info/picocli-on-graalvm.html)
 
 ## License
 MIT License
