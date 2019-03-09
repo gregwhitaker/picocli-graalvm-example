@@ -1,8 +1,13 @@
 # picocli-graalvm-example
-An example of how to compile a picocli application into a native image using GraalVM.
+An example of how to compile a [picocli](https://picocli.info/) application into a native image using [GraalVM](https://www.graalvm.org).
+
+## Prerequisites
+This example requires that you have [GraalVM](https://www.graalvm.org/downloads/) installed on your system.
 
 ## Building the Example
-TBD
+Follow the steps below to build the example:
+
+1. TBD
 
 ## Running the Example
 TBD
